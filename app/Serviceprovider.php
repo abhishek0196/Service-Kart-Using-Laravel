@@ -17,7 +17,7 @@ class Serviceprovider extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','phone_no','google_code'//,'days_of_week',
+        'name', 'email', 'password','phone_no','google_code','verified',//,'days_of_week',
     ];
 
     /**

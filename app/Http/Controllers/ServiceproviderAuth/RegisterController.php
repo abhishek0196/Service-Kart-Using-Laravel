@@ -6,13 +6,13 @@ use App\Serviceprovider;
 use App\ServiceTime;
 use App\VerifyServiceProvider;
 use App\Mail\VerifyMail;
-use Validator;
+use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Auth\Events\Registered;
-
+use DB;
 use Mail;
 
 
@@ -45,7 +45,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('serviceprovider.guest');
+        $this->middleware('guest:serviceprovider');
     }
    /**
      * Handle a registration request for the application.
@@ -53,7 +53,7 @@ class RegisterController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function register(Request $request)
+    /*public function register(Request $request)
     {
         $this->validator($request->all())->validate();
 
@@ -63,7 +63,10 @@ class RegisterController extends Controller
 
         return $this->registered($request, $user)
                         ?: redirect($this->redirectPath());
-    }
+    }*/
+
+
+    
     /**
      * Get a validator for an incoming registration request.
      *
@@ -142,6 +145,39 @@ class RegisterController extends Controller
     protected function guard()
     {
         return Auth::guard('serviceprovider');
+    }
+
+    public function register(Request $request)
+    {
+        $input = $request->all();
+        $validator = $this->validator($input);
+        if($validator->passes()){
+            $user = $this->create($input)->toArray();
+            $user['link'] = str_random(30);
+            DB::table('verify_service_providers')->insert(['serviceprovider_id' => $user['id'], 'token' => $user['link']]);
+            Mail::send('mail.useractivation', $user, function($message) use ($user){
+                $message->to($user['email']);
+                $message->subject('QuickService - Activation Code');
+            });
+            return redirect()->to('/serviceprovider/login')->with('Success',"We sent activation code, please check your email");
+        }
+        return back()->with('Error', $validator->errors());
+    }
+    public function userActivation($token)
+    {
+        $check = DB::table('verify_service_providers')->where('token', $token)->first();
+        if(!is_null($check)) 
+        {
+            $user = ServiceProvider::find($check->serviceprovider_id);
+            if($user->verified == 1)
+            {
+                return redirect()->to('/serviceprovider/login')->with('Success', "User are already activated");
+            }
+            $user->update(['verified' => 1]);
+            DB::table('verify_service_providers')->where('token', $token)->delete();
+            return redirect()->to('/serviceprovider/login')->with('Success', "User active successfully");
+        }
+        return redirect()->to('/serviceprovider/login')->with('warning', "Your token is invalid");
     }
    /* public function verifyUser($token)
     {

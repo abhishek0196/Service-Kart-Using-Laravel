@@ -13,11 +13,13 @@ class CreateVerifyServiceProvidersTable extends Migration
      */
     public function up()
     {
-      /*  Schema::create('verify_service_providers', function (Blueprint $table) {
-            $table->increments('serviceprovider_id')->unsigned();
+        Schema::create('verify_service_providers', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('serviceprovider_id')->unsigned();
+            $table->foreign('serviceprovider_id')->references('id')->on('serviceproviders')->onDelete('cascade');
             $table->string('token');
-            $table->timestamps();
-        });*/
+            $table->timestamp('create_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+        });
     }
 
     /**

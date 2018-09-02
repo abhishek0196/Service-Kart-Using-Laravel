@@ -77,7 +77,7 @@ Route::group(['prefix' => 'serviceprovider'], function () {
   Route::post('/password/reset', 'ServiceproviderAuth\ResetPasswordController@reset')->name('password.email');
   Route::get('/password/reset', 'ServiceproviderAuth\ForgotPasswordController@showLinkRequestForm')->name('password.reset');
   Route::get('/password/reset/{token}', 'ServiceproviderAuth\ResetPasswordController@showResetForm');
-
+  Route::get('user/activation/{token}', 'ServiceproviderAuth\RegisterController@userActivation')->name('activation');
   
   Route::resource('product_categories', 'ServiceproviderAuth\ProductCategoriesController');
   Route::post('product_categories_mass_destroy', ['uses' => 'ServiceproviderAuth\ProductCategoriesController@massDestroy', 'as' => 'product_categories.mass_destroy']);
