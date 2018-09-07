@@ -70,7 +70,7 @@
                 <ul class="treeview-menu">
                     
                     <li>
-                        <a href="{{ route('product_categories.index') }}">
+                        <a href="{{ route('pending_orders.index') }}">
                             <i class="fa fa-folder"></i>
                             <span>Pending Orders</span>
                         </a>
