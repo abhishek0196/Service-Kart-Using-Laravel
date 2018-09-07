@@ -15,14 +15,17 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->increments('id');
-            $table->enum('status', ['pending', 'approved','inprogress','completed','cancelled'])->default('pending');
+            $table->enum('status', ['pending', 'approved','inprogress','completed','cancelled','rejected'])->default('pending');
             $table->integer('customer-id')->unsigned();
             $table->foreign('customer-id')->references('id')->on('customers')->onDelete('cascade');;
             $table->integer('serviceprovider-id')->unsigned();
             $table->foreign('serviceprovider-id')->references('id')->on('serviceproviders')->onDelete('cascade');;
             $table->integer('service-id')->unsigned();
             $table->foreign('service-id')->references('id')->on('products')->onDelete('cascade');;
-            $table->timestamps();
+            $table->string('google_code');
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
+            //$table->timestamps();
         });
     }
 
