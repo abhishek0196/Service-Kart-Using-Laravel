@@ -115,11 +115,14 @@ $id = Auth::guard('customer')->user()->id;
                             <li><a href="#">Beauty Services</a></li>
                             
                             <li><a href="#">Tution Services</a></li>
-                            
-                            
-                            
-                            
+                          
                         </ul>
+
+                         <a href="{{route('orderHistory.index')}}">
+                            <i class="glyphicon glyphicon-briefcase"></i>
+                            Orders
+                            
+                        </a>
                     </li>
                   
                     <li>
