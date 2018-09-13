@@ -1,6 +1,17 @@
 @extends('customer.layout.auth')
 
 @section('service_form')
+
+{{--  check as category and main office is using the same file  --}}
+@if(isset($products))
+<a href = "{{route('OfficeServices.catgeories')}}">Sort By Category</a>
+@else
+@if(count($cproducts) > 0)
+
+<?php $products = $cproducts;
+?>
+@endif
+@endif
 @if(count($products) > 0)
 @foreach($products as $product)
             <div class="well">
