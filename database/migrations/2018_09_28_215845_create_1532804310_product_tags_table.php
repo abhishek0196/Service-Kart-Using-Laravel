@@ -1,0 +1,36 @@
+<?php
+
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class Create1532804310ProductTagsTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        if(! Schema::hasTable('product_tags')) {
+            Schema::create('product_tags', function (Blueprint $table) {
+                $table->increments('id');
+                $table->string('name')->nullable();
+                $table->integer('pcid')->unsigned()->nullable();
+                $table->foreign('pcid')->references('id')->on('product_categories')->onDelete('cascde');
+                $table->timestamps();
+                
+            });
+        }
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('product_tags');
+    }
+}
