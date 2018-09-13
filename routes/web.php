@@ -60,8 +60,15 @@ Route::group(['prefix' => 'customer'], function () {
 
   
   Route::resource('/order/OfficeServices', 'CustomerAuth\Orders\OfficeServiceController');
+  Route::get('/order/office/categories', ['uses' => 'CustomerAuth\Orders\OfficeServiceController@categoryView', 'as' => 'OfficeServices.catgeories']);
+  Route::get('/order/office/categories/{id}', ['uses' => 'CustomerAuth\Orders\OfficeServiceController@productView', 'as' => 'catgeory']);
+
+
   Route::resource('/order/BeautyServices', 'CustomerAuth\Orders\BeautyServiceController');
   Route::resource('/order/TutionServices', 'CustomerAuth\Orders\TutionServiceController');
+
+
+  Route::resource('/orderHistory', 'CustomerAuth\Orders\OrdersOverviewController');
   
 });
 
@@ -88,5 +95,12 @@ Route::group(['prefix' => 'serviceprovider'], function () {
 
   Route::get('profile' , 'ServiceproviderAuth\ProfileController@index')->name('profile.index');
   Route::post('updateprofile' , 'ServiceproviderAuth\ProfileController@updateProfile')->name('profile.update');
+
+  
+  Route::resource('pending_orders', 'ServiceproviderAuth\orders\PendingController');
+
+  Route::get('/approveStatus/{updateStatus}','ServiceproviderAuth\orders\PendingController@approveStatus')->name('status.approve');
+  Route::get('/rejectStatus/{updateStatus}','ServiceproviderAuth\orders\PendingController@rejectStatus')->name('status.reject');
+  
   
 });
