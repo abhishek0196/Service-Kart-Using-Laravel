@@ -11,7 +11,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        
+       /* 
         $items = [
             
             ['id' => 1, 'name' => 'Office Services' ,'description' => 'All The Office Services','photo' => null],
@@ -23,7 +23,20 @@ class DatabaseSeeder extends Seeder
 
         foreach ($items as $item) {
             \App\ProductCategory::create($item);
+        }*/
+
+        $itag = [
+            
+            ['id' => 1, 'name' => 'AC Repair' ,'pcid' => 1 ],
+            ['id' => 2, 'name' => 'Computer Repair' ,'pcid' =>1],
+            
+        ];
+
+        foreach ($itag as $item) {
+            \App\ProductTag::create($item);
         }
+
+
         
 
     }
