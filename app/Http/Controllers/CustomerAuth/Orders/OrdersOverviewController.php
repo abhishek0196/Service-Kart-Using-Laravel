@@ -42,10 +42,6 @@ class OrdersOverviewController extends Controller
         // set url path for generted links
         $paginatedItems->setPath(route('orderHistory.index'));
 
-        /* SELECT TIMESTAMPDIFF(minute,created_at,now()) from orders where id = 23; */
-
-        /*SELECT CONCAT(FLOOR(TIME_FORMAT(SEC_TO_TIME(@seconds), '%H') / 24), 'days ',MOD(TIME_FORMAT(SEC_TO_TIME(@seconds), '%H'), 24), 'h:',TIME_FORMAT(SEC_TO_TIME(@seconds), '%im:%ss')) AS Result;*/
-        
        
         return view('customer.order.history.index')->with('data',$paginatedItems);
 
