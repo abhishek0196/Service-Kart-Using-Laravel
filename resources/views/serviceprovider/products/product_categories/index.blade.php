@@ -18,7 +18,7 @@
         </div>
 
         <div class="panel-body table-responsive">
-            <table class="table table-bordered table-striped {{ count($product_categories) > 0 ? 'datatable' : '' }} @can('product_category_delete') dt-select @endcan">
+            <table class="table table-bordered table-striped datatable">
                 <thead>
                     <tr>
                         @can('product_category_delete')
@@ -43,7 +43,7 @@
 
                                 <td field-key='name'>{{ $product_category->name }}</td>
                                 <td field-key='description'>{!! $product_category->description !!}</td>
-                                <td field-key='photo'>@if($product_category->photo)<a href="{{ asset(env('UPLOAD_PATH').'/' . $product_category->photo) }}" target="_blank"><img src="{{ asset(env('UPLOAD_PATH').'/thumb/' . $product_category->photo) }}"/></a>@endif</td>
+                                  <td field-key='photo'>@if($product_category->photo)<a href="{{ asset(env('UPLOAD_PATH').'/' . $product_category->photo) }}" target="_blank"><img src="{{ asset(env('UPLOAD_PATH').'/thumb/' . $product_category->photo) }}"/></a>@endif</td>
                                                                 <td>
                                     @can('product_category_view')
                                     <a href="{{ route('admin.product_categories.show',[$product_category->id]) }}" class="btn btn-xs btn-primary">@lang('quickadmin.qa_view')</a>
@@ -60,7 +60,7 @@
                                     {!! Form::submit(trans('quickadmin.qa_delete'), array('class' => 'btn btn-xs btn-danger')) !!}
                                     {!! Form::close() !!}
                                     @endcan
-                                </td>
+                                </td>  
 
                             </tr>
                         @endforeach

@@ -28,8 +28,20 @@
                       <div  class ="address"> </div> 
                     </div>
                     <div class="col-md-4">
-                        <a href="{{route('status.approve',[$product->id])}}" class="btn btn-s btn-success" style = "border-radius: 8px;">Approve</a>
-                        <a href="{{route('status.reject',[$product->id])}}" class="btn btn-s btn-danger" style = "border-radius: 8px;">Decline</a>
+                    <?php $status = $product->status?>
+                        @if($status == 'completed')
+                            <div class="btn btn-s btn-success"> Completed</div>
+                        @elseif($status == 'rejected')
+                            <div class="btn btn-s btn-danger"> Rejected</div>
+                        @elseif($status == 'inprogess')
+                            <div class="btn btn-s btn-info"> In Progress</div>
+                        @elseif($status == 'approved')
+                            <div class="btn btn-s btn-info">  Approved</div>
+                        @elseif($status == 'pending')
+                            <div class="btn btn-s btn-warning">  Pending</div>
+                        @endif
+                        
+                        
                     </div>
                 </div>
                 

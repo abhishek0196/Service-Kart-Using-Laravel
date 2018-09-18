@@ -56,8 +56,69 @@ class ProductsController extends Controller
      */
     public function store(StoreProductsRequest $request)
     {
-       
-        $request = $this->saveFiles($request);
+        $this->validate($request, [
+            'photo1' => 'image|nullable|mimes:jpeg,png,jpg,gif,svg|max:1999',
+            'photo2' => 'image|nullable|mimes:jpeg,png,jpg,gif,svg|max:1999',
+            'photo3' => 'image|nullable|mimes:jpeg,png,jpg,gif,svg|max:1999',
+           
+        ]);
+        /* if($request->hasFile('photo1'))
+        {
+          
+            // Get filename with the extension
+            $filenameWithExt = $request->file('photo1')->getClientOriginalName();
+            // Get just filename
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            // Get just ext
+            $extension = $request->file('photo1')->getClientOriginalExtension();
+            // Filename to store
+            $fileNameToStore= $filename.'_'.time().'.'.$extension;
+            // Upload Image
+            $path = $request->file('photo1')->storeAs('public/product_image', $fileNameToStore);  
+        }
+        else
+        {
+            $fileNameToStore = 'noimage.jpg';
+        }
+        if($request->hasFile('photo2'))
+        {
+          
+            // Get filename with the extension
+            $filenameWithExt = $request->file('photo2')->getClientOriginalName();
+            // Get just filename
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            // Get just ext
+            $extension = $request->file('photo2')->getClientOriginalExtension();
+            // Filename to store
+            $fileNameToStore= $filename.'_'.time().'.'.$extension;
+            // Upload Image
+            $path = $request->file('photo2')->storeAs('public/product_image', $fileNameToStore);  
+        }
+        else
+        {
+            $fileNameToStore = 'noimage.jpg';
+        }
+        if($request->hasFile('photo3'))
+        {
+          
+            // Get filename with the extension
+            $filenameWithExt = $request->file('photo3')->getClientOriginalName();
+            // Get just filename
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            // Get just ext
+            $extension = $request->file('photo3')->getClientOriginalExtension();
+            // Filename to store
+            $fileNameToStore= $filename.'_'.time().'.'.$extension;
+            // Upload Image
+            $path = $request->file('photo3')->storeAs('public/product_image', $fileNameToStore);  
+        }
+        else
+        {
+            $fileNameToStore = 'noimage.jpg';
+        } */
+   
+        $request  = $this->saveFiles($request);
+
         $product = Product::create($request->all());
         $product->category()->sync(array_filter((array)$request->input('category')));
         $product->tag()->sync(array_filter((array)$request->input('tag')));

@@ -1,7 +1,7 @@
 @extends('serviceprovider.layouts.auth')
 @section('content_script')
 
-<link rel="stylesheet" href="http://jonthornton.github.io/jquery-timepicker/jquery.timepicker.css" type="text/css" />
+
 
 <script src= "https://cdn.jsdelivr.net/openlocationcode/latest/openlocationcode.min.js"></script>
 
@@ -9,23 +9,8 @@
 
 <script src=" https://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
 
-<script src="http://jonthornton.github.io/jquery-timepicker/jquery.timepicker.js"></script>
 
-<script>
 
-  $(document).ready(function () {
-	       
-	            $('#startTime').timepicker();
-
-                
-				
-               	$('#endTime').timepicker();
-               
-               
-	        	
-  });
-
-</script>
 
 
 <script>
@@ -261,8 +246,8 @@ function showError(error) {
                                     </span>
                                 @endif
                             </div>
-                        </div>
-                        <div class="form-group row">
+                                </div>
+                                <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                             <div class="col-md-6">

@@ -28,7 +28,7 @@
           <div class="form-group">
             <label class="col-lg-3 control-label">Phone Number:</label>
             <div class="col-lg-8">
-              <input class="form-control" pattern="[6789][0-9]{9}" value="{{Auth::guard('serviceprovider')->user()->phone_no}}" type="tel"     name = "phone_no">
+              <input class="form-control" pattern="[6789][0-9]{9}" value="{{Auth::guard('serviceprovider')->user()->phone_no}}" type="tel"     name = "phone_no" readonly>
             </div>
           </div>
         
@@ -36,19 +36,19 @@
           <div class="form-group">
             <label class="col-md-3 control-label">Email ID:</label>
             <div class="col-md-8">
-              <input class="form-control" value="{{Auth::guard('serviceprovider')->user()->email}}" type="text" name = "email">
+              <input class="form-control" value="{{Auth::guard('serviceprovider')->user()->email}}" type="text" name = "email" readonly>
             </div>
           </div>
           <div class="form-group">
             <label class="col-md-3 control-label">Password:</label>
             <div class="col-md-8">
-              <input class="form-control" value="11111122333" type="password">
+              <input class="form-control" value="11111122333" type="password" name = "password">
             </div>
           </div>
           <div class="form-group">
             <label class="col-md-3 control-label">Confirm password:</label>
             <div class="col-md-8">
-              <input class="form-control" value="11111122333" type="password">
+              <input class="form-control" value="11111122333" type="password" name = "password_confirmation">
             </div>
           </div>
    

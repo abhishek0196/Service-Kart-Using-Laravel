@@ -28,8 +28,9 @@
                       <div  class ="address"> </div> 
                     </div>
                     <div class="col-md-4">
-                        <a href="{{route('status.approve',[$product->id])}}" class="btn btn-s btn-success" style = "border-radius: 8px;">Approve</a>
-                        <a href="{{route('status.reject',[$product->id])}}" class="btn btn-s btn-danger" style = "border-radius: 8px;">Decline</a>
+                    
+                        <a href="{{route('status.completed',[$product->id])}}" class="btn btn-s btn-success" style = "border-radius: 8px;">Completed</a>
+                        
                     </div>
                 </div>
                 

@@ -8,11 +8,7 @@
         <a href="{{ route('products.create') }}" class="btn btn-success">@lang('quickadmin.qa_add_new')</a>
         
     </p>
-    
-
-    
-
-    <div class="panel panel-default">
+  <div class="panel panel-default">
         <div class="panel-heading">
             @lang('quickadmin.qa_list')
         </div>

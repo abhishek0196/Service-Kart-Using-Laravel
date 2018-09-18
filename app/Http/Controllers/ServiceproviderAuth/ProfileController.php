@@ -41,9 +41,9 @@ class ProfileController extends Controller
     public function updateProfile(Request $request)
     {
         $this->validate($request, [
-            'phone_no' => 'required|numeric|min:10',
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255',
+            'password' => 'required|confirmed|min:6',
+            
         ]);
         $id = Auth::guard('serviceprovider')->user()->id;
         $updateProfile = Serviceprovider::find($id);
@@ -51,7 +51,7 @@ class ProfileController extends Controller
         $updateProfile->email = $request->input('email');
         $updateProfile->phone_no = $request->input('phone_no');
         $updateProfile->save();
-        return view('serviceprovider.Profile.index');
+        return view('serviceprovider.Profile.index')->with('success','updated');
     }
 
 }

@@ -2,8 +2,10 @@
 
 namespace App\Notifications;
 
+use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Contracts\Queue\ShouldQueue;
 
 class ServiceproviderResetPassword extends Notification
 {
@@ -45,7 +47,7 @@ class ServiceproviderResetPassword extends Notification
     {
         return (new MailMessage)
             ->line('You are receiving this email because we received a password reset request for your account.')
-            ->action('Reset Password', url('serviceprovider/password/reset', $this->token))
+            ->action('Reset Password', route('serviceprovider.password.reset', $this->token))
             ->line('If you did not request a password reset, no further action is required.');
     }
 }

@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Http\Request;
 
-class ResetPasswordController extends Controller
+class ResetPasswordController extends Controller    
 {
     /*
     |--------------------------------------------------------------------------
@@ -38,24 +38,10 @@ class ResetPasswordController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('serviceprovider.guest');
+        $this->middleware('guest:serviceprovider');
     }
 
-    /**
-     * Display the password reset view for the given token.
-     *
-     * If no token is present, display the link request form.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  string|null  $token
-     * @return \Illuminate\Http\Response
-     */
-    public function showResetForm(Request $request, $token = null)
-    {
-        return view('serviceprovider.auth.passwords.reset')->with(
-            ['token' => $token, 'email' => $request->email]
-        );
-    }
+    
 
     /**
      * Get the broker to be used during password reset.
@@ -75,5 +61,22 @@ class ResetPasswordController extends Controller
     protected function guard()
     {
         return Auth::guard('serviceprovider');
+    }
+
+
+    /**
+     * Display the password reset view for the given token.
+     *
+     * If no token is present, display the link request form.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  string|null  $token
+     * @return \Illuminate\Http\Response
+     */
+    public function showResetForm(Request $request, $token = null)
+    {
+        return view('serviceprovider.auth.passwords.reset')->with(
+            ['token' => $token, 'email' => $request->email]
+        );
     }
 }

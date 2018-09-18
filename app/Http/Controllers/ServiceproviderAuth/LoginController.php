@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 use Hesto\MultiAuth\Traits\LogsoutGuard;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -38,7 +39,7 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('serviceprovider.guest', ['except' => 'logout']);
+        $this->middleware('guest:serviceprovider')->except('logout');
     }
 
     /**
@@ -59,5 +60,11 @@ class LoginController extends Controller
     protected function guard()
     {
         return Auth::guard('serviceprovider');
+    }
+
+    public function credentials(Request $request)
+    {
+        $request['verified'] = 1;
+        return $request->only('email', 'password', 'verified');
     }
 }

@@ -70,6 +70,12 @@
                 <ul class="treeview-menu">
                     
                     <li>
+                        <a href="{{ route('completed_orders.index') }}">
+                            <i class="fa fa-shopping-cart"></i>
+                            <span>All Orders</span>
+                        </a>
+                    </li>
+                    <li>
                         <a href="{{ route('pending_orders.index') }}">
                             <i class="fa fa-folder"></i>
                             <span>Pending Orders</span>
@@ -78,19 +84,19 @@
                     
                    
                     <li>
-                        <a href="{{ route('product_tags.index') }}">
+                        <a href="{{ route('approved_orders.index') }}">
                             <i class="fa fa-tags"></i>
                             <span>Approved Orders</span>
                         </a>
                     </li>
                     
-                   
                     <li>
-                        <a href="{{ route('products.index') }}">
-                            <i class="fa fa-shopping-cart"></i>
-                            <span>Completed Orders</span>
+                        <a href="{{ route('inprogress_orders.index') }}">
+                            <i class="fa fa-tags"></i>
+                            <span>Inprogress Orders</span>
                         </a>
                     </li>
+                    
                     
                 </ul>
             </li>

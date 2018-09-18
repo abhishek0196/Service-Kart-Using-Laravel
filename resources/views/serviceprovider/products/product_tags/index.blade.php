@@ -4,10 +4,7 @@
 @section('content')
     <h3 class="page-title">@lang('quickadmin.product-tags.title')</h3>
     
-    <p>
-        <a href="{{ route('product_tags.create') }}" class="btn btn-success">@lang('quickadmin.qa_add_new')</a>
-        
-    </p>
+    
     
 
     
@@ -46,13 +43,13 @@
                                     
                                     <a href="{{ route('product_tags.edit',[$product_tag->id]) }}" class="btn btn-xs btn-info">@lang('quickadmin.qa_edit')</a>
                                     
-{!! Form::open(array(
+                                   {{--   {!! Form::open(array(
                                         'style' => 'display: inline-block;',
                                         'method' => 'DELETE',
                                         'onsubmit' => "return confirm('".trans("quickadmin.qa_are_you_sure")."');",
                                         'route' => ['product_tags.destroy', $product_tag->id])) !!}
                                     {!! Form::submit(trans('quickadmin.qa_delete'), array('class' => 'btn btn-xs btn-danger')) !!}
-                                    {!! Form::close() !!}
+                                    {!! Form::close() !!}  --}}
                                     
                                 </td>
 

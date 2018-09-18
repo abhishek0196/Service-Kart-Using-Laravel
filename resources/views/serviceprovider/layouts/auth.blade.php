@@ -37,6 +37,7 @@
     @yield('content_script')
 </head>
 <body>
+
 @if(!Auth::guard('serviceprovider')->user()   )
 
     <nav class="navbar navbar-default navbar-static-top">

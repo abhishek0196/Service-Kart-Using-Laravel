@@ -87,9 +87,7 @@
                 <div class="col-xs-12 form-group">
                     {!! Form::label('photo1', trans('quickadmin.products.fields.photo1').'', ['class' => 'control-label']) !!}
                     {!! Form::file('photo1', ['class' => 'form-control', 'style' => 'margin-top: 4px;']) !!}
-                    {!! Form::hidden('photo1_max_size', 8) !!}
-                    {!! Form::hidden('photo1_max_width', 6000) !!}
-                    {!! Form::hidden('photo1_max_height', 6000) !!}
+                   
                     <p class="help-block"></p>
                     @if($errors->has('photo1'))
                         <p class="help-block">
@@ -97,6 +95,32 @@
                         </p>
                     @endif
                 </div>
+                 <div class="col-xs-12 form-group">
+                    {!! Form::label('photo2', trans('quickadmin.products.fields.photo2').'', ['class' => 'control-label']) !!}
+                    {!! Form::file('photo2', ['class' => 'form-control', 'style' => 'margin-top: 4px;']) !!}
+                   
+                    <p class="help-block"></p>
+                    @if($errors->has('photo2'))
+                        <p class="help-block">
+                            {{ $errors->first('photo2') }}
+                        </p>
+                    @endif
+                </div>
+                <div class="col-xs-12 form-group">
+                    {!! Form::label('photo3', trans('quickadmin.products.fields.photo3').'', ['class' => 'control-label']) !!}
+                    {!! Form::file('photo3', ['class' => 'form-control', 'style' => 'margin-top: 4px;']) !!}
+                   
+                    <p class="help-block"></p>
+                    @if($errors->has('photo3'))
+                        <p class="help-block">
+                            {{ $errors->first('photo3') }}
+                        </p>
+                    @endif
+                </div>
+              
+                 
+                    
+                   
             </div>
             
         </div>

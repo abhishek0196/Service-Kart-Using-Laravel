@@ -10,7 +10,7 @@ use DB;
 use Auth;
 
 
-class PendingController extends Controller
+class ApprovedController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,15 +21,10 @@ class PendingController extends Controller
     {
     
         //select c.email,p.name from orders o,customers c,products p where c.id = `customer-id` and o.status = 'pending' and `serviceprovider-id`=1 and `service-id`=p.id;
-
-
-
         $sid = Auth::guard('serviceprovider')->user()->id;
-        $ret = collect(DB::select("select o.id,o.`serviceprovider-id` as sid ,c.email,c.phone_no,o.google_code as gcode ,p.description,p.price,p.name from orders o,customers c,products p where c.id = `customer-id` and o.status = 'pending' and `serviceprovider-id`=$sid and `service-id`=p.id;"))->sortByDesc('id');
+        $ret = collect(DB::select("select o.id,o.`serviceprovider-id` as sid ,c.email,c.phone_no,o.google_code as gcode ,p.description,p.price,p.name from orders o,customers c,products p where c.id = `customer-id` and o.status = 'approved' and `serviceprovider-id`=$sid and `service-id`=p.id;"))->sortByDesc('id');
 
-          
-        
-        // Get current page form url e.x. &page=1
+       // Get current page form url e.x. &page=1
         $currentPage = LengthAwarePaginator::resolveCurrentPage();
  
         // Create a new Laravel collection from the array data
@@ -46,11 +41,11 @@ class PendingController extends Controller
         $paginatedItems= new LengthAwarePaginator($currentPageItems , count($itemCollection), $perPage);
  
         // set url path for generted links
-        $paginatedItems->setPath(route('pending_orders.index'));
+        $paginatedItems->setPath(route('approved_orders.index'));
         //$user = DB::table('orders AS o','customers as c','products as p')->where('o.status', 'pending')->where('serviceprovider-id',$sid)->where('c.id','customer-id')->where('service-id','p.id')->get();
        //dd($user);
         
-        return view('serviceprovider.orders.pending.index')->with('data',$paginatedItems);
+        return view('serviceprovider.orders.approved.index')->with('data',$paginatedItems);
         
     }
 
@@ -92,29 +87,7 @@ class PendingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function approveStatus($id)
-    {
-        $product = DB::update('update orders set status = "approved" where id =?',[$id]);
-
-        
-       
-       return redirect('/serviceprovider/pending_orders');
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function rejectStatus($id)
-    {
-        $product = DB::update('update orders set status = "rejected" where id =?',[$id]);
-
-        
-       
-        return redirect('/serviceprovider/pending_orders');
-    }
+   
     /**
      * Update the specified resource in storage.
      *
@@ -137,4 +110,17 @@ class PendingController extends Controller
     {
         //
     }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function inProgress($id)
+    {
+        $product = DB::update('update orders set status = "inprogess" where id =?',[$id]);
+        return redirect('/serviceprovider/approved_orders');
+    }
+
 }

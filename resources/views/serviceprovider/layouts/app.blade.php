@@ -9,7 +9,7 @@
 <body class="hold-transition skin-blue sidebar-mini">
 
 <div id="wrapper">
-
+{{--  @include('serviceprovider.layouts.message')  --}}
 @include('serviceprovider.partials.topbar')
 @include('serviceprovider.partials.sidebar')
 
