@@ -38,7 +38,29 @@ class ResetPasswordController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('customer.guest');
+        $this->middleware('guest:customer');
+    }
+
+    
+
+    /**
+     * Get the broker to be used during password reset.
+     *
+     * @return \Illuminate\Contracts\Auth\PasswordBroker
+     */
+    protected function broker()
+    {
+        return Password::broker('customers');
+    }   
+
+    /**
+     * Get the guard to be used during password reset.
+     *
+     * @return \Illuminate\Contracts\Auth\StatefulGuard
+     */
+    protected function guard()
+    {
+        return Auth::guard('customer');
     }
 
     /**
@@ -55,25 +77,5 @@ class ResetPasswordController extends Controller
         return view('customer.auth.passwords.reset')->with(
             ['token' => $token, 'email' => $request->email]
         );
-    }
-
-    /**
-     * Get the broker to be used during password reset.
-     *
-     * @return \Illuminate\Contracts\Auth\PasswordBroker
-     */
-    public function broker()
-    {
-        return Password::broker('customers');
-    }
-
-    /**
-     * Get the guard to be used during password reset.
-     *
-     * @return \Illuminate\Contracts\Auth\StatefulGuard
-     */
-    protected function guard()
-    {
-        return Auth::guard('customer');
     }
 }
