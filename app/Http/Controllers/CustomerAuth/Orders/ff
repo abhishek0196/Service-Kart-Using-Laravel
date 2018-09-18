@@ -1,0 +1,7 @@
+
+select * from product_categories where id in( select product_category_id  from product_product_category where `product_id` in(select `service-id` from orders where `customer-id` = 1));
+
+select c.*,o.status from customers c,orders o where o.`customer-id` = c.id;
+
+
+do the reverse geo coding to get the complte address from the latitude and longitude

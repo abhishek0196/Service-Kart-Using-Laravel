@@ -38,6 +38,9 @@
      @yield('content_script')
 </head>
 <body>
+
+@include('customer.layout.message')
+
 @if(!Auth::guard('customer')->user()   )
 
     <nav class="navbar navbar-default navbar-static-top">
@@ -110,7 +113,7 @@ $id = Auth::guard('customer')->user()->id;
                             Services
                         </a>
                         <ul class="collapse list-unstyled" id="pageSubmenu">
-                            <li><a href="order/OfficeServices">Office Services</a></li>
+                            <li><a href="{{route('OfficeServices.index')}}">Office Services</a></li>
                             
                             <li><a href="#">Beauty Services</a></li>
                             

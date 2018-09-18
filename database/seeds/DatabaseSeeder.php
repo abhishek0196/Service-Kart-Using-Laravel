@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
 
         foreach ($items as $item) {
             \App\ProductCategory::create($item);
-        }*/
+        }
 
         $itag = [
             
@@ -34,6 +34,13 @@ class DatabaseSeeder extends Seeder
 
         foreach ($itag as $item) {
             \App\ProductTag::create($item);
+        }*/
+
+        $adminn = [
+            ['id' => 1, 'name' => 'Abhishek' ,'email' => 'abhishek.agarwal@mca.christuniversity.in','password' => '$2y$10$peFSuZ365NhS6YtZKmflIuwVJXyZt.IkZwHffxh9DR0VpevQ2YU2G']
+        ];
+        foreach ($adminn as $item) {
+            \App\Admin::create($item);
         }
 
 

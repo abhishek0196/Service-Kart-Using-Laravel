@@ -1,16 +1,87 @@
 <?php
 
 return [
-		'user-management' => [		'title' => 'User management',		'fields' => [		],	],
-		'roles' => [		'title' => 'Roles',		'fields' => [			'title' => 'Title',		],	],
-		'users' => [		'title' => 'Users',		'fields' => [			'name' => 'Name',			'email' => 'Email',			'password' => 'Password',			'role' => 'Role',			'remember-token' => 'Remember token',			'phone-no' => 'Phone no',		],	],
-		'service-management' => [		'title' => 'Service management',		'fields' => [		],	],
-		'product-categories' => [		'title' => 'Categories',		'fields' => [			'name' => 'Category name',			'description' => 'Description',			'photo' => 'Photo (max 8mb)',		],	],
-		'product-tags' => [		'title' => 'Tags',		'fields' => [			'name' => 'Name',		],	],
-		'products' => [		'title' => 'Service ',		'fields' => [			'name' => 'Service name',			'description' => 'Description',			'price' => 'Estimated Price',			'tag' => 'Tag',			'photo1' => 'Photo1',			'category' => 'Category',			'service-provider' => 'Service provider',		],	],
-		'service-providers-management' => [		'title' => 'Service providers management',		'fields' => [		],	],
-		'service-providers' => [		'title' => 'Service providers',		'fields' => [		],	],
-		'serviceproviders' => [		'title' => 'Serviceproviders',		'fields' => [		],	],
+	
+	'user-management' => [
+		'title' => 'User management',
+		'fields' => [
+		],
+	],
+	
+	'roles' => [
+		'title' => 'Roles',
+		'fields' => [
+			'title' => 'Title',
+		],
+	],
+	
+	'users' => [
+		'title' => 'Users',
+		'fields' => [
+			'name' => 'Name',
+			'email' => 'Email',
+			'password' => 'Password',
+			'role' => 'Role',
+			'remember-token' => 'Remember token',
+			'phone-no' => 'Phone no',
+		],
+	],
+	
+	'service-management' => [
+		'title' => 'Service management',
+		'fields' => [
+		],
+	],
+	
+	'product-categories' => [
+		'title' => 'Categories',
+		'fields' => [
+			'name' => 'Category name',
+			'description' => 'Description',
+			'photo' => 'Photo ',
+		],
+	],
+	
+	'product-tags' => [
+		'title' => 'Tags',
+		'fields' => [
+			'name' => 'Name',
+		],
+	],
+	
+	'products' => [
+		'title' => 'Service ',
+		'fields' => [
+			'name' => 'Service name',
+			'description' => 'Description',
+			'price' => 'Estimated Price',
+			'tag' => 'Tag',
+			'photo1' => 'Photo1',
+			'photo2' => 'Photo2',
+			'photo3' => 'Photo3',
+			'photo4' => 'Photo4',
+			'category' => 'Category',
+			'service-provider' => 'Service provider',
+		],
+	],
+	
+	'service-providers-management' => [
+		'title' => 'Service providers management',
+		'fields' => [
+		],
+	],
+	
+	'service-providers' => [
+		'title' => 'Service providers',
+		'fields' => [
+		],
+	],
+	
+	'serviceproviders' => [
+		'title' => 'Serviceproviders',
+		'fields' => [
+		],
+	],
 	'qa_create' => 'Create',
 	'qa_save' => 'Save',
 	'qa_edit' => 'Edit',
@@ -100,7 +171,7 @@ return [
 	'qa_phone1' => 'Phone 1',
 	'qa_phone2' => 'Phone 2',
 	'qa_skype' => 'Skype',
-	'qa_photo' => 'Photo (max 8mb)',
+	'qa_photo' => 'Photo ',
 	'qa_category_name' => 'Category name',
 	'qa_product_management' => 'Product management',
 	'qa_products' => 'Products',

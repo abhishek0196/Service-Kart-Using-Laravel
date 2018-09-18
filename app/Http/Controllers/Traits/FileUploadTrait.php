@@ -14,7 +14,7 @@ trait FileUploadTrait
     public function saveFiles(Request $request)
     {
 
-		$uploadPath = public_path(env('UPLOAD_PATH'));
+		$uploadPath = public_path("storage/product_image");
 		$thumbPath = public_path(env('UPLOAD_PATH').'/thumb');
         if (! file_exists($uploadPath)) {
             mkdir($uploadPath, 0775);

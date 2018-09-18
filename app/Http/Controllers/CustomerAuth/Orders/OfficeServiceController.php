@@ -21,10 +21,15 @@ class OfficeServiceController extends Controller
      */
     public function index()
     {
+
+        /* select * from products where serviceprovider_id in idd (select serviceproviders_id as idd,                                                              rviceprovider_id as sid from products where id in(select product_id from product_product_category where product_category_id = 1)));
+ */
         $user = DB::table('product_product_category')->where('product_category_id', 1)->pluck('product_id');
         $query = DB::table('products')->whereIn('id',$user)->get();
+        $sid = DB::table('products')->whereIn('id',$user)->pluck('serviceprovider_id');
+        $day = DB::table('service_times')->whereIn('serviceproviders_id',$sid)->get();
         
-        return view('customer.order.Office.index')->with('products',$query);;
+        return view('customer.order.Office.index')->with('products',$query)->with('day',$day);
     }
 
     /**
@@ -84,10 +89,10 @@ class OfficeServiceController extends Controller
 
     public function  productView($id)
     {
-        $query = DB::select('select * from products  where id in (select product_id from product_product_tag where product_tag_id = ? )',[$id]);
-        return view('customer.order.Office.index')->with('cproducts',$query);;
-        
-        
-        
+        $user = DB::table('product_product_tag')->where('product_tag_id', $id)->pluck('product_id');
+        $query = DB::table('products')->whereIn('id',$user)->get();
+        $sid = DB::table('products')->whereIn('id',$user)->pluck('serviceprovider_id');
+        $day = DB::table('service_times')->whereIn('serviceproviders_id',$sid)->get();
+        return view('customer.order.Office.index')->with('cproducts',$query)->with('day',$day);;
     }
 }

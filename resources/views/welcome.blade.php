@@ -58,8 +58,8 @@
 					<li><a href="#services">Services</a></li>
 					<li><a href="#team">Team</a></li>
 					<li><a href="#pricing">Pricing</a></li>
-					<li><a href="/customer/register"  class="btn btn-blue">Sign Up</a></li>
-					<li><a href="/serviceprovider/register"  class="btn btn-blue">Sign Up</a></li>
+					<li><a href="/customer/login"  class="btn btn-blue">Sign Up</a></li>
+					<li><a href="/serviceprovider/login"  class="btn btn-blue">Sign Up</a></li>
 				</ul>
 			</div>
 			<!-- /.navbar-collapse -->

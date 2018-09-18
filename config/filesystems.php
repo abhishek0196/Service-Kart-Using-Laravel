@@ -65,12 +65,12 @@ return [
 
         'uploads' => [
             'driver' => 'local',
-            'root' => public_path('uploads'),
+            'root' => public_path('storage/product_image'),
         ],
 
         'uploads_test' => [
             'driver' => 'local',
-            'root' => public_path('uploads/test')
+            'root' => public_path('storage/test')
         ],
 
     ],
